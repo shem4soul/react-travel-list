@@ -27,10 +27,18 @@ function Form() {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (!description) return;
+
+    const newItem = { description, quantity, packed: false, id: Date.now() };
+    console.log(newItem);
+
+    setDescription("");
+    setQuantity(1);
   }
 
   return (
-    <div className="add-form" onSubmit={handleSubmit}>
+    <form className="add-form" onSubmit={handleSubmit}>
       <h3>What do you need for your😎 trip?</h3>
       <select
         value={quantity}
@@ -49,7 +57,7 @@ function Form() {
         onChange={(e) => setDescription(e.target.value)}
       />
       <button>Add</button>
-    </div>
+    </form>
   );
 }
 
